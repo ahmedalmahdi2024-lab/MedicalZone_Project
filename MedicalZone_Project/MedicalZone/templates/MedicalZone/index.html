@@ -1,0 +1,206 @@
+{% load static %}
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Medical Zone | صيانة الأجهزة الطبية</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <style>
+      /* تحسين مظهر رسالة النجاح */
+      .alert-success {
+        background-color: #d4edda;
+        color: #155724;
+        padding: 18px;
+        border-radius: 12px;
+        margin: 25px auto;
+        max-width: 850px;
+        text-align: center;
+        border: 2px solid #c3e6cb;
+        font-weight: bold;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        position: relative;
+        z-index: 1000;
+      }
+
+      /* تحسينات بسيطة على استجابة الصور */
+      .service-card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 8px 8px 0 0;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="logo">Medical <span>Zone</span></div>
+        <ul>
+          <li><a href="#home">الرئيسية</a></li>
+          <li><a href="#services">خدماتنا</a></li>
+          <li><a href="#contact">اطلب صيانة</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <section id="home" class="hero">
+      <div class="hero-content" data-aos="fade-left">
+        <h1>نحافظ على كفاءة أجهزتكم الطبية</h1>
+        <p>
+          لأن سلامة المرضى أولويتنا، نقدم أدق حلول الصيانة والمعايرة لجميع
+          المراكز الطبية بسوهاج.
+        </p>
+        <a
+          href="#contact"
+          class="btn-main pulse-animation"
+          style="text-decoration: none; display: inline-block"
+          >اطلب خدمة الآن</a
+        >
+      </div>
+      <div class="hero-image" data-aos="fade-right">
+        <img src="{% static 'images/hero-medical.jpg' %}" alt="صيانة طبية" />
+      </div>
+    </section>
+
+    <div class="container">
+      {% if messages %} {% for message in messages %}
+      <div class="alert alert-success" id="success-alert">
+        <i class="fas fa-check-circle"></i> {{ message }}
+      </div>
+      {% endfor %} {% endif %}
+    </div>
+
+    <section id="services" class="services-section">
+      <div class="container">
+        <h2 class="section-title" data-aos="fade-up">خدماتنا الاحترافية</h2>
+        <div class="services-grid">
+          {% for service in services %}
+          <div
+            class="service-card"
+            data-aos="zoom-in"
+            data-aos-delay="{{ forloop.counter }}00"
+          >
+            {% if service.image %}
+            <img src="{{ service.image.url }}" alt="{{ service.title }}" />
+            {% endif %}
+            <div class="card-body" style="padding: 15px">
+              <h3>{{ service.title }}</h3>
+              <p>{{ service.description }}</p>
+            </div>
+          </div>
+          {% empty %}
+          <p
+            style="
+              text-align: center;
+              grid-column: 1 / -1;
+              font-size: 1.2rem;
+              color: #666;
+            "
+          >
+            لا توجد خدمات متاحة حالياً. تفقد لوحة التحكم لإضافتها.
+          </p>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+      <div class="container">
+        <h2 class="section-title" data-aos="fade-up">اطلب خدمة صيانة</h2>
+        <p class="contact-subtitle" data-aos="fade-up">
+          املأ البيانات بدقة وسيقوم مهندس الصيانة بالتواصل معك فوراً.
+        </p>
+
+        <div class="contact-container">
+          <form class="contact-form" method="POST" data-aos="fade-left">
+            {% csrf_token %}
+            <div class="form-group">
+              <input
+                type="text"
+                name="hospital_name"
+                placeholder="اسم المستشفى / العيادة"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <input
+                type="text"
+                name="device_type"
+                placeholder="نوع الجهاز الطبي المعطل"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <input
+                type="tel"
+                name="phone_number"
+                placeholder="رقم التواصل (واتساب مفضل)"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <textarea
+                name="description"
+                placeholder="اشرح لنا العطل أو المشكلة باختصار..."
+                rows="5"
+                required
+              ></textarea>
+            </div>
+            <button type="submit" class="btn-submit">إرسال الطلب الآن</button>
+          </form>
+
+          <div class="contact-info" data-aos="fade-right">
+            <div class="info-item">
+              <h3>الدعم الفني المباشر</h3>
+              <p>مهندسو الموقع جاهزون للرد على استفساراتكم 24/7.</p>
+            </div>
+            <div class="info-item">
+              <h3>البريد الإلكتروني</h3>
+              <p>support@medicalzone.com</p>
+            </div>
+            <div class="info-item">
+              <h3>الموقع الرئيسي</h3>
+              <p>جمهورية مصر العربية، محافظة سوهاج</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer
+      style="
+        text-align: center;
+        padding: 20px;
+        background: #f8f9fa;
+        border-top: 1px solid #eee;
+        margin-top: 50px;
+      "
+    >
+      <p>© 2026 Medical Zone - جميع الحقوق محفوظة</p>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="{% static 'script.js' %}"></script>
+    <script>
+      AOS.init({
+        duration: 800,
+        once: true,
+      });
+
+      // إخفاء رسالة النجاح بسلاسة بعد 5 ثوانٍ
+      window.onload = function () {
+        setTimeout(function () {
+          let alert = document.getElementById("success-alert");
+          if (alert) {
+            alert.style.transition = "opacity 0.8s ease, transform 0.8s ease";
+            alert.style.opacity = "0";
+            alert.style.transform = "translateY(-20px)";
+            setTimeout(() => alert.remove(), 800);
+          }
+        }, 5000);
+      };
+    </script>
+  </body>
+</html>
