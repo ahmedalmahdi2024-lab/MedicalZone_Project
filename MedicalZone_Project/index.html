@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Medical Zone | صيانة الأجهزة الطبية</title>
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <link rel="stylesheet" href="script.js" />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="logo">Medical <span>Zone</span></div>
+        <ul>
+          <li><a href="#home">الرئيسية</a></li>
+          <li><a href="#services">خدماتنا</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <section id="home" class="hero">
+      <div class="hero-content" data-aos="fade-left">
+        <h1>نحافظ على كفاءة أجهزتكم الطبية</h1>
+        <p>لأن سلامة المرضى أولويتنا، نقدم أدق حلول الصيانة والمعايرة.</p>
+
+        <a
+          href="#contact"
+          class="btn-main pulse-animation"
+          style="text-decoration: none; display: inline-block"
+          >اطلب خدمة الآن</a
+        >
+      </div>
+      <div class="hero-image" data-aos="fade-right">
+        <img src="images/hero-medical.jpg" alt="صيانة طبية" />
+      </div>
+    </section>
+
+    <section id="services" class="services-section">
+      <div class="container">
+        <h2 class="section-title" data-aos="fade-up">خدماتنا الاحترافية</h2>
+        <div class="services-grid">
+          <div class="service-card" data-aos="zoom-in" data-aos-delay="100">
+            <img src="images/service1.jpg" alt="صيانة دورية" />
+            <h3>الصيانة الوقائية</h3>
+            <p>
+              برامج صيانة دورية لضمان استمرارية عمل الأجهزة الطبية بكفاءة ومنع
+              الأعطال المفاجئة.
+            </p>
+          </div>
+
+          <div class="service-card" data-aos="zoom-in" data-aos-delay="200">
+            <img src="images/service2.jpg" alt="معايرة أجهزة" />
+            <h3>المعايرة الدقيقة</h3>
+            <p>
+              ضبط ومعايرة الأجهزة وفق المعايير الدولية لضمان دقة التشخيص وسلامة
+              المرضى.
+            </p>
+          </div>
+
+          <div class="service-card" data-aos="zoom-in" data-aos-delay="300">
+            <img src="images/service3.jpg" alt="إصلاح أجهزة" />
+            <h3>الإصلاح الفني</h3>
+            <p>
+              فريق متخصص لإصلاح الأعطال المعقدة وتوفير قطع الغيار الأصلية في وقت
+              قياسي.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="contact" class="contact-section">
+      <div class="container">
+        <h2 class="section-title" data-aos="fade-up">اطلب خدمة صيانة</h2>
+        <p class="contact-subtitle" data-aos="fade-up">
+          يرجى ملء النموذج أدناه وسيقوم فريقنا التقني بالتواصل معكم خلال أقل من
+          ساعة.
+        </p>
+
+        <div class="contact-container">
+          <form class="contact-form" data-aos="fade-left">
+            <div class="form-group">
+              <input
+                type="text"
+                placeholder="اسم المستشفى / العيادة"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <input type="text" placeholder="نوع الجهاز الطبي" required />
+            </div>
+            <div class="form-group">
+              <input type="tel" placeholder="رقم التواصل (واتساب)" required />
+            </div>
+            <div class="form-group">
+              <textarea
+                placeholder="وصف المشكلة أو العطل التقني"
+                rows="5"
+                required
+              ></textarea>
+            </div>
+            <button type="submit" class="btn-submit">إرسال الطلب الآن</button>
+          </form>
+
+          <div class="contact-info" data-aos="fade-right">
+            <div class="info-item">
+              <h3>الدعم الفني المباشر</h3>
+              <p>
+                نحن متاحون يوميا علي مدار 24 ساعة للحالات الطارئة في المستشفيات.
+              </p>
+            </div>
+            <div class="info-item">
+              <h3>البريد الإلكتروني</h3>
+              <p>support@medicalzone.com</p>
+            </div>
+            <div class="info-item">
+              <h3>الموقع الرئيسي</h3>
+              <p>المنطقة الطبية، مصر - محافظة سوهاج</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="script.js"></script>
+    <script>
+      AOS.init(); // تفعيل الحركات
+    </script>
+  </body>
+</html>
